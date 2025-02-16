@@ -1,8 +1,11 @@
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './user-module';
+import { AppModule } from './app.module';
+import { Transport } from '@nestjs/microservices';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  await app.listen(process.env.PORT ?? 3000);
+
+  // Configure the API Gateway to listen on port 3000
+  await app.listen(3000); // API Gateway will be accessible on localhost:3000
 }
 bootstrap();
